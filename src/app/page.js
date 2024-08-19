@@ -1,12 +1,10 @@
-import Footer from "@/components/footer/footer";
-import Navbar from "@/components/navbar/navbar";
 import Link from "next/link";
 import styles from "./home.module.css";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
+      
       <div className={styles.container}>
        <div className= {styles['home-left']}>
       <div className={styles['left-content']}>
@@ -108,7 +106,6 @@ export default function Home() {
       </section>
 
 
-      <Footer />
     </>
   );
 }
