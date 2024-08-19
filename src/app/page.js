@@ -1,24 +1,3 @@
-// import Footer from "@/components/footer/footer";
-// import Navbar from "@/components/navbar/navbar";
-
-// export default function Home() {
-//   return (
-//    <>
-//    <Navbar/>
-//      <div className="flex flex-col items-center justify-center h-screen">
-    
-//       <h1 className="text-4xl font-bold mb-4">Flashcards for CDAC students</h1>
-//       <a href="/login" className="text-blue-500 mb-2">Login</a>
-//       <a href="/dashboard" className="text-blue-500">Go to Prebuild Cards</a>
-          
-//     </div>
-//     <Footer/>
-//    </>
-//   );
-// }
-
-
-
 import Footer from "@/components/footer/footer";
 import Navbar from "@/components/navbar/navbar";
 import Link from "next/link";
@@ -39,8 +18,8 @@ export default function Home() {
 
           </p>
           <div className={styles.buttons}>
-          <Link href="/signup" className={styles.btn}>
-          <button className={styles.button}>Signup</button>
+          <Link href="/register" className={styles.btn}>
+          <button className={styles.button}>Register</button>
         </Link>
         
           </div>
