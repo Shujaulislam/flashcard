@@ -1,111 +1,73 @@
 import Link from "next/link";
-import styles from "./home.module.css";
 
 export default function Home() {
   return (
-    <>
-      
-      <div className={styles.container}>
-       <div className= {styles['home-left']}>
-      <div className={styles['left-content']}>
-      <h1 className={styles.heading}>Flashcards for CDAC students</h1>
-        <p>
-          CDAC Flashcards is an interactive study tool with pre-built and<br/>
-           custom flashcards.Go digital, reduce your carbon footprint,<br/>
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 to-purple-100 py-16">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Flashcards for CDAC students</h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+            CDAC Flashcards is an interactive study tool with pre-built and
+            custom flashcards. Go digital, reduce your carbon footprint,
             and study sustainably for the CDAC Examination
-
           </p>
-          <div className={styles.buttons}>
-          <Link href="/register" className={styles.btn}>
-          <button className={styles.button}>Register</button>
-        </Link>
-
+          <div className="flex justify-center">
+            <Link href="/register" className="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition duration-300">
+              Register
+            </Link>
           </div>
+        </div>
       </div>
-      </div>
 
-      <div className={styles['home-right']}>
-
-      </div>
-       </div>
-
-{/* --------------------------------------------------------------------------------------- */}
-
- {/* Second Header Section */}
- <section className={styles.secondHeader}>
-        <div className={styles.container2}>
-          <h2 className={styles.containerTitle}>Key Features</h2>
-          <div className={styles.cardContainer}>
-
-            <div className={styles.card}>
-              <Link href="/dashboard">
-                <i className={`fa-solid fa-star ${styles.icon}`}></i>
-              </Link>
-              <h2>Favourite Cards</h2>
-              <p>
+      {/* Second Header Section */}
+      <section className="bg-white py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-gray-900 text-3xl font-bold text-center mb-12">Key Features</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+              <h3 className="text-gray-900 text-xl font-semibold mb-4">Favourite Cards</h3>
+              <p className="text-gray-600 mb-4">
                 Your most cherished flashcards, handpicked and readily available. Keep your top study aids just a click away, so you can quickly review the content that matters most to you.
               </p>
-              <Link href="/dashboard" className={styles.learnMore}>Learn More</Link>
+              <Link href="/dashboard" className="text-indigo-600 hover:text-indigo-800">Learn More</Link>
             </div>
-
-            <div className={styles.card}>
-              <Link href="">
-                <i className={`fa-solid fa-box-archive ${styles.icon}`}></i>
-              </Link>
-              <h2>Archived Sets</h2>
-              <p>
-                Store and organize your flashcards for future use. Whether you’ve mastered them or just want to keep them handy, your archived sets are safely stashed away, ready for when you need them.
+            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+              <h3 className="text-gray-900 text-xl font-semibold mb-4">Archived Sets</h3>
+              <p className="text-gray-600 mb-4">
+                Store and organize your flashcards for future use. Whether you've mastered them or just want to keep them handy, your archived sets are safely stashed away, ready for when you need them.
               </p>
-              <Link href="/customcard" className={styles.learnMore}>Learn More</Link>
+              <Link href="/customcard" className="text-indigo-600 hover:text-indigo-800">Learn More</Link>
             </div>
-
           </div>
         </div>
       </section>
 
       {/* Third Header Section */}
-      <section className={styles.thirdHeader}>
-        <div className={styles.container2}>
-          <h2 className={styles.containerTitle}>Our Vision</h2>
-          <div className={styles.cardContainer}>
-
-            <div className={styles.card}>
-              <Link href="/power-up-learning">
-                <i className={`fa-solid fa-lightbulb ${styles.icon}`}></i>
-              </Link>
-              <h2>Power Up Your Learning</h2>
-              <p>
+      <section className="bg-gray-100 py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-gray-900 text-3xl font-bold text-center mb-12">Our Vision</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-gray-900 text-xl font-semibold mb-4">Power Up Your Learning</h3>
+              <p className="text-gray-600">
                 Research shows that digital flashcards supercharge retention and performance, making your CDAC CCEE exam prep more effective than ever.
               </p>
             </div>
-
-            <div className={styles.card}>
-              <Link href="/study-smart">
-                <i className={`fa-solid fa-laptop ${styles.icon}`}></i>
-              </Link>
-              <h2>Study Smart, Anytime, Anywhere</h2>
-              <p>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-gray-900 text-xl font-semibold mb-4">Study Smart, Anytime, Anywhere</h3>
+              <p className="text-gray-600">
                 Students love the convenience of digital flashcards. Our platform is designed to keep you engaged and on track, wherever you are.
               </p>
-
             </div>
-
-            <div className={styles.card}>
-              <Link href="/go-green">
-                <i className={`fa-solid fa-seedling ${styles.icon}`}></i>
-              </Link>
-              <h2>Go Green, Study Clean</h2>
-              <p>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-gray-900 text-xl font-semibold mb-4">Go Green, Study Clean</h3>
+              <p className="text-gray-600">
                 Ditch the paper and embrace sustainability. Our digital flashcards offer an eco-friendly way to master your studies without harming the environment.
               </p>
-
             </div>
-
           </div>
         </div>
       </section>
-
-
-    </>
+    </div>
   );
 }
