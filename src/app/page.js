@@ -51,14 +51,14 @@ export default function Home() {
             </div>
 
             <div className={styles.card}>
-              <Link href="/archived-sets">
+              <Link href="">
                 <i className={`fa-solid fa-box-archive ${styles.icon}`}></i>
               </Link>
               <h2>Archived Sets</h2>
               <p>
                 Store and organize your flashcards for future use. Whether you’ve mastered them or just want to keep them handy, your archived sets are safely stashed away, ready for when you need them.
               </p>
-              <Link href="/dashboard" className={styles.learnMore}>Learn More</Link>
+              <Link href="/customcard" className={styles.learnMore}>Learn More</Link>
             </div>
 
           </div>

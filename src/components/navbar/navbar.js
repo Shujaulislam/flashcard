@@ -26,7 +26,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/custom-cards">
+            <Link href="/customcard">
               Custom Cards
             </Link>
           </li>
