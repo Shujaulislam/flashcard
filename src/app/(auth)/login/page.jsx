@@ -61,13 +61,15 @@ const LoginPage = () => {
                             </div>
                             <div className="relative flex justify-center text-sm">
                                 <span className="px-2 bg-white text-gray-500">
-                                    Or continue with
+                                    Or
                                 </span>
                             </div>
                         </div>
 
-                        <div className="mt-6 grid grid-cols-3 gap-3">
-                            {/* Add social login buttons here if needed */}
+                        <div className="mt-6">
+                            <Link href="/forgot-password" className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                Forgot Password?
+                            </Link>
                         </div>
                     </div>
                 </div>
