@@ -1,6 +1,5 @@
 
 
-
 import Navbar from '@/components/navbar/navbar';
 import { decks } from '../../data/decks';
 import styles from './dashboard.module.css';
