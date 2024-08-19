@@ -1,0 +1,20 @@
+/* src/styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.relative {
+  perspective: 1000px;
+}
+
+.absolute {
+  transform-style: preserve-3d;
+}
