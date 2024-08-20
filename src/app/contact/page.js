@@ -72,7 +72,7 @@ import Link from "next/link";
                   <textarea className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" placeholder="Message" />
                 </div>
                 <div className="flex items-center justify-end">
-                  <button className="bg-gradient-to-r from-blue-400 to-purple-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                  <button className="bg-gradient-to-r from-blue-400 to-purple-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:opacity-90 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg" type="button">
                     Send message
                   </button>
                 </div>
