@@ -15,7 +15,7 @@ export default function CustomCardPage() {
     const newCard = { front: frontText, back: backText };
     setPreviewCard(newCard);
     console.log('Card created:', newCard);
-  };    
+  };
 
   const handleCardSubmit = () => {
     // TODO: Implement the logic to submit the card to the database
@@ -27,7 +27,7 @@ export default function CustomCardPage() {
     <div className="min-h-screen bg-gradient-to-b from-blue-100 to-purple-100 p-6">
       <div className="max-w-md mx-auto bg-white rounded-3xl shadow-lg p-8">
         <h1 className="text-3xl font-semibold mb-6 text-gray-700 text-center">Create Flashcard</h1>
-        
+
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <label htmlFor="frontText" className="block mb-2 text-sm font-medium text-gray-600">Front of the card</label>

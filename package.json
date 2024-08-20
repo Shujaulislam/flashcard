@@ -11,6 +11,7 @@
   "dependencies": {
     "@clerk/nextjs": "^5.3.2",
     "hammerjs": "^2.0.8",
+    "mongodb": "^6.8.0",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
     "react": "^18",
@@ -21,6 +22,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "postcss": "^8",
+    "prisma": "^5.18.0",
     "tailwindcss": "^3.4.1"
   }
 }
