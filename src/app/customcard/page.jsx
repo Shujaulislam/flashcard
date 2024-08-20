@@ -8,6 +8,7 @@ export default function CustomCardPage() {
   const [backText, setBackText] = useState('');
   const [previewCard, setPreviewCard] = useState(null);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isCardSubmitted, setIsCardSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,6 +16,12 @@ export default function CustomCardPage() {
     setPreviewCard(newCard);
     console.log('Card created:', newCard);
   };    
+
+  const handleCardSubmit = () => {
+    // TODO: Implement the logic to submit the card to the database
+    console.log('Card submitted to database:', previewCard);
+    setIsCardSubmitted(true);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-100 to-purple-100 p-6">
@@ -59,9 +66,20 @@ export default function CustomCardPage() {
         {previewCard && (
           <div className="mt-8">
             <h2 className="text-2xl font-semibold mb-4 text-gray-800 text-center">Preview</h2>
-            <div onClick={() => setIsFlipped(!isFlipped)} className="cursor-pointer">
+            <div onClick={() => setIsFlipped(!isFlipped)} className="cursor-pointer mb-4">
               <FlipCard card={previewCard} isFlipped={isFlipped} noAnimation={false} />
             </div>
+            {!isCardSubmitted && (
+              <button
+                onClick={handleCardSubmit}
+                className="w-full bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold py-3 px-6 rounded-xl hover:opacity-90 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
+              >
+                Submit Card
+              </button>
+            )}
+            {isCardSubmitted && (
+              <p className="text-center text-green-600 font-semibold">Card submitted successfully!</p>
+            )}
           </div>
         )}
       </div>

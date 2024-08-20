@@ -12,7 +12,7 @@ export default function Home() {
             and study sustainably for the CDAC Examination
           </p>
           <div className="flex justify-center">
-            <Link href="/register" className="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition duration-300">
+            <Link href="/register" className="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition duration-300 hover:opacity-90 transform hover:-translate-y-1 hover:shadow-lg">
               Register
             </Link>
           </div>
