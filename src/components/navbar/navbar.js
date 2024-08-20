@@ -27,6 +27,11 @@ const Navbar = () => {
               Custom Cards
             </Link>
           </li>
+          <li>
+            <Link href="/contact">
+             Contact
+            </Link>
+          </li>
         </ul>
         <div>
         <Link href="/login" className={styles.btn}>
@@ -34,7 +39,7 @@ const Navbar = () => {
         </Link>
       </div>
       </div>
-     
+
     </div>
   );
 };
