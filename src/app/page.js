@@ -1,5 +1,13 @@
 import Link from "next/link";
 
+import {
+
+  SignInButton,
+  SignedIn,
+  SignedOut,
+
+} from '@clerk/nextjs'
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 to-purple-100 py-16">
@@ -12,9 +20,14 @@ export default function Home() {
             and study sustainably for the CDAC Examination
           </p>
           <div className="flex justify-center">
-            <Link href="/register" className="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition duration-300 hover:opacity-90 transform hover:-translate-y-1 hover:shadow-lg">
+            {/* <Link href="/register"  ">
               Register
-            </Link>
+            </Link> */}
+
+<SignedOut  >
+            <SignInButton className="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition duration-300 hover:opacity-90 transform hover:-translate-y-1 hover:shadow-lg" />
+          </SignedOut>
+
           </div>
         </div>
       </div>

@@ -2,6 +2,14 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './navbar.module.css';
 
+import {
+
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
+
 const Navbar = () => {
   return (
     <div className={`${styles.navbar} ${styles.nav}`}>
@@ -34,12 +42,19 @@ const Navbar = () => {
           </li>
         </ul>
         <div>
-        <Link href="/login" className={styles.btn}>
+        {/* <Link href="/login" className={styles.btn}>
           Login
-        </Link>
+        </Link> */}
       </div>
       </div>
-
+<div>
+<SignedOut>
+            <SignInButton className="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition duration-300 hover:opacity-90 transform hover:-translate-y-1 hover:shadow-lg" />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+</div>
     </div>
   );
 };
