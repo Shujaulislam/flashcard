@@ -9,11 +9,9 @@ export default function CustomCardPage() {
   const [previewCard, setPreviewCard] = useState(null);
   const [isFlipped, setIsFlipped] = useState(false);
 
-  const handleCreateCard = () => {
-    const newCard = {
-      front: frontText,
-      back: backText,
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newCard = { front: frontText, back: backText };
     setPreviewCard(newCard);
     console.log('Card created:', newCard);
   };    
@@ -23,36 +21,40 @@ export default function CustomCardPage() {
       <div className="max-w-md mx-auto bg-white rounded-3xl shadow-lg p-8">
         <h1 className="text-3xl font-semibold mb-6 text-gray-700 text-center">Create Flashcard</h1>
         
-        <div className="mb-6">
-          <label htmlFor="frontText" className="block mb-2 text-sm font-medium text-gray-600">Front of the card</label>
-          <textarea
-            id="frontText"
-            value={frontText}
-            onChange={(e) => setFrontText(e.target.value)}
-            className="w-full p-3 border text-gray-950 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition"
-            rows="3"
-            placeholder="Enter front text..."
-          />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-6">
+            <label htmlFor="frontText" className="block mb-2 text-sm font-medium text-gray-600">Front of the card</label>
+            <textarea
+              id="frontText"
+              value={frontText}
+              onChange={(e) => setFrontText(e.target.value)}
+              className="w-full p-3 border text-gray-950 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition"
+              rows="3"
+              placeholder="Enter front text..."
+              required
+            />
+          </div>
 
-        <div className="mb-6">
-          <label htmlFor="backText" className="block mb-2 text-sm font-medium text-gray-600">Back of the card</label>
-          <textarea
-            id="backText"
-            value={backText}
-            onChange={(e) => setBackText(e.target.value)}
-            className="w-full p-3 border text-gray-950 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition"
-            rows="3"
-            placeholder="Enter back text..."
-          />
-        </div>
+          <div className="mb-6">
+            <label htmlFor="backText" className="block mb-2 text-sm font-medium text-gray-600">Back of the card</label>
+            <textarea
+              id="backText"
+              value={backText}
+              onChange={(e) => setBackText(e.target.value)}
+              className="w-full p-3 border text-gray-950 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition"
+              rows="3"
+              placeholder="Enter back text..."
+              required
+            />
+          </div>
 
-        <button
-          onClick={handleCreateCard}
-          className="w-full bg-gradient-to-r from-blue-400 to-purple-500 text-white font-semibold py-3 px-6 rounded-xl hover:opacity-90 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
-        >
-          Create Card
-        </button>
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-blue-400 to-purple-500 text-white font-semibold py-3 px-6 rounded-xl hover:opacity-90 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
+          >
+            Preview Card
+          </button>
+        </form>
 
         {previewCard && (
           <div className="mt-8">
