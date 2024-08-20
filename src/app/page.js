@@ -34,7 +34,7 @@ export default function Home() {
             <div className="bg-gray-50 p-6 rounded-lg shadow-md">
               <h3 className="text-gray-900 text-xl font-semibold mb-4">Archived Sets</h3>
               <p className="text-gray-600 mb-4">
-                Store and organize your flashcards for future use. Whether you've mastered them or just want to keep them handy, your archived sets are safely stashed away, ready for when you need them.
+                Store and organize your flashcards for future use. Whether you mastered them or just want to keep them handy, your archived sets are safely stashed away, ready for when you need them.
               </p>
               <Link href="/customcard" className="text-indigo-600 hover:text-indigo-800">Learn More</Link>
             </div>
