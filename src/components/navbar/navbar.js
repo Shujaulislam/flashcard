@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from './navbar.module.css';
+import Image from 'next/image';
 
 import {
 
@@ -14,8 +15,10 @@ const Navbar = () => {
   return (
     <div className={`${styles.navbar} ${styles.nav}`}>
       <div className={styles['navbar-start']}>
+
         <Link href="/" className={`${styles.btn} ${styles['btn-ghost']} ${styles['text-xl']}`}>
-         C-DAC Flashcards
+CDAC FLASHCARDS
+
         </Link>
       </div>
       <div className={`${styles['navbar-center']} ${styles['hidden']} ${styles['lg:flex']}`}>
