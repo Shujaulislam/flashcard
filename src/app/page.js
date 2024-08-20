@@ -38,14 +38,14 @@ export default function Home() {
           <h2 className="text-gray-900 text-3xl font-bold text-center mb-12">Key Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-gray-50 p-6 rounded-lg shadow-md">
-              <h3 className="text-gray-900 text-xl font-semibold mb-4"> Bhen ke Lode KHUd kr le</h3>
+              <h3 className="text-gray-900 text-xl font-semibold mb-4"> Prebuilt Cards</h3>
               <p className="text-gray-600 mb-4">
                 Your most cherished flashcards, handpicked and readily available. Keep your top study aids just a click away, so you can quickly review the content that matters most to you.
               </p>
               <Link href="/dashboard" className="text-indigo-600 hover:text-indigo-800">Learn More</Link>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg shadow-md">
-              <h3 className="text-gray-900 text-xl font-semibold mb-4">Archived Sets</h3>
+              <h3 className="text-gray-900 text-xl font-semibold mb-4">Custom Cards</h3>
               <p className="text-gray-600 mb-4">
                 Store and organize your flashcards for future use. Whether you mastered them or just want to keep them handy, your archived sets are safely stashed away, ready for when you need them.
               </p>
