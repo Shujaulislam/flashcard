@@ -21,7 +21,7 @@ export default function CustomCardPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-100 to-purple-100 p-6">
       <div className="max-w-md mx-auto bg-white rounded-3xl shadow-lg p-8">
-        <h1 className="text-3xl font-semibold mb-6 text-gray-800 text-center">Create Flashcard</h1>
+        <h1 className="text-3xl font-semibold mb-6 text-gray-700 text-center">Create Flashcard</h1>
         
         <div className="mb-6">
           <label htmlFor="frontText" className="block mb-2 text-sm font-medium text-gray-600">Front of the card</label>
@@ -29,7 +29,7 @@ export default function CustomCardPage() {
             id="frontText"
             value={frontText}
             onChange={(e) => setFrontText(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition"
+            className="w-full p-3 border text-gray-950 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition"
             rows="3"
             placeholder="Enter front text..."
           />
@@ -41,7 +41,7 @@ export default function CustomCardPage() {
             id="backText"
             value={backText}
             onChange={(e) => setBackText(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition"
+            className="w-full p-3 border text-gray-950 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition"
             rows="3"
             placeholder="Enter back text..."
           />
