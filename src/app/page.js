@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { SignUp } from "@clerk/nextjs";
 
 export default function Home() {
   return (
@@ -12,12 +11,10 @@ export default function Home() {
             custom flashcards. Go digital, reduce your carbon footprint,
             and study sustainably for the CDAC Examination
           </p>
-          <div className="flex justify-center space-x-4">
-            <SignUp routing="hash" mode="modal">
-              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                Register
-              </button>
-            </SignUp>
+          <div className="flex justify-center">
+            <Link href="/register" className="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition duration-300 hover:opacity-90 transform hover:-translate-y-1 hover:shadow-lg">
+              Register
+            </Link>
           </div>
         </div>
       </div>

@@ -1,16 +1,16 @@
-import { auth } from "@clerk/nextjs";
+
+
+
+
 import { decks } from '../../data/decks';
 import styles from './dashboard.module.css';
 
+
 export default function Dashboard() {
-  const { userId } = auth();
-
-  if (!userId) {
-    return <div>Please sign in to view the deck.</div>;
-  }
-
   return (
-    <div className={styles.container}>
+    <>
+    
+      <div className={styles.container}>
       <h1 className={styles.title}> PG Diploma In Advanced Computing (PG-DAC)</h1>
       <h2 className={styles['title-content']}>PG-DAC is the most popular PG Diploma course of C-DAC.
         The course is targeted towards Engineering Graduates and
@@ -27,6 +27,8 @@ export default function Dashboard() {
             key={deck.id} 
             className={styles.card}
           >
+            {/* Add image before the title */}
+            {/* <img src={deck.image} alt={deck.title} className={styles['card-image']} /> */}
             <h2 className={styles['card-title']}>{deck.title}</h2>
             {deck.description && <p className={styles['card-description']}>{deck.description}</p>}
             <a 
@@ -39,5 +41,6 @@ export default function Dashboard() {
         ))}
       </div>
     </div>
+    </>
   );
 }

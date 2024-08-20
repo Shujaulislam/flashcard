@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from './navbar.module.css';
-import { UserButton, SignIn } from "@clerk/nextjs";
 
 const Navbar = () => {
   return (
@@ -35,16 +34,15 @@ const Navbar = () => {
           </li>
         </ul>
         <div>
-          <UserButton />
-          <SignIn mode="modal">
-            <button className={`${styles.btn} ${styles['btn-primary']}`}>
-              Sign In
-            </button>
-          </SignIn>
-        </div>
+        <Link href="/login" className={styles.btn}>
+          Login
+        </Link>
       </div>
+      </div>
+
     </div>
   );
 };
 
 export default Navbar;
+
