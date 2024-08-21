@@ -4,18 +4,25 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
 generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "mongodb"
-  url      = env("mongodb+srv://abdullahbarudgar:786459@flashcard.ebyaa.mongodb.net/?retryWrites=true&w=majority&appName=flashcard")
+model Deck {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  title  String
+  cards  Card[]
 }
-
 
 model Card {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
-  title  String
-  userId String @db.ObjectId
+  front  String
+  back   String
+  deckId String @db.ObjectId
+  deck   Deck   @relation(fields: [deckId], references: [id])
 }
