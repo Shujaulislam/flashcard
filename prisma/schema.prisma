@@ -12,3 +12,10 @@ datasource db {
   provider = "mongodb"
   url      = env("mongodb+srv://abdullahbarudgar:786459@flashcard.ebyaa.mongodb.net/?retryWrites=true&w=majority&appName=flashcard")
 }
+
+
+model Card {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  title  String
+  userId String @db.ObjectId
+}
