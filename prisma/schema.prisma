@@ -9,6 +9,6 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("mongodb+srv://abdullahbarudgar:786459@flashcard.ebyaa.mongodb.net/?retryWrites=true&w=majority&appName=flashcard")
 }
