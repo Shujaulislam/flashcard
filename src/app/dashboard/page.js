@@ -1,7 +1,3 @@
-
-
-
-
 import { decks } from '../../data/decks';
 import styles from './dashboard.module.css';
 
@@ -27,8 +23,6 @@ export default function Dashboard() {
             key={deck.id} 
             className={styles.card}
           >
-            {/* Add image before the title */}
-            {/* <img src={deck.image} alt={deck.title} className={styles['card-image']} /> */}
             <h2 className={styles['card-title']}>{deck.title}</h2>
             {deck.description && <p className={styles['card-description']}>{deck.description}</p>}
             <a 
