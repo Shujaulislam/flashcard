@@ -1,32 +1,10 @@
-// "use client";
-// import { useAuth } from "@clerk/nextjs";
-// import Login from "../components/Login";
-// import { useRouter } from "next/navigation";
-
-// function Page() {
-//   const { userId } = useAuth();
-//   const router = useRouter();
-
-//   if (userId) {
-//     router.push("/customcard");
-//   }
-
-//   return (
-//     <div className="h-screen" style={{ color: "white" }}>
-//       <Login />
-//     </div>
-//   );
-// }
-
-// export default Page;
-
-
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 to-purple-100 py-16">
+    <div className="min-h-screen bg-white py-16">
       <div className="container mx-auto px-4">
+        {/* Main Header Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Flashcards for CDAC students
@@ -37,15 +15,16 @@ export default function Home() {
             study sustainably for the CDAC Examination
           </p>
           <div className="flex justify-center">
-            {/* <Link href="/register"  ">
-              Register
+            {/* Example button for register (uncomment and style as needed) */}
+            {/* <Link href="/register">
+              <a className="btn">Register</a>
             </Link> */}
           </div>
         </div>
       </div>
 
       {/* Second Header Section */}
-      <section className=" bg-gradient-to-br from-pink-100 to-purple-100 py-16">
+      <section className="bg-white py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-gray-900 text-3xl font-bold text-center mb-12">
             Key Features
@@ -53,7 +32,6 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-gray-50 p-6 rounded-lg shadow-md">
               <h3 className="text-gray-900 text-xl font-semibold mb-4">
-                {" "}
                 Prebuilt Cards
               </h3>
               <p className="text-gray-600 mb-4">
@@ -61,11 +39,9 @@ export default function Home() {
                 available. Keep your top study aids just a click away, so you
                 can quickly review the content that matters most to you.
               </p>
-              <Link
-                href="/dashboard"
-                className="text-indigo-600 hover:text-indigo-800"
-              >
-                Learn More
+              <Link href="/prebuilt" className="text-indigo-600 hover:text-indigo-800">
+                  Learn More
+                
               </Link>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg shadow-md">
@@ -77,11 +53,9 @@ export default function Home() {
                 mastered them or just want to keep them handy, your archived
                 sets are safely stashed away, ready for when you need them.
               </p>
-              <Link
-                href="/customcard"
-                className="text-indigo-600 hover:text-indigo-800"
-              >
-                Learn More
+              <Link href="/customcard" className="text-indigo-600 hover:text-indigo-800">
+                  Learn More
+                
               </Link>
             </div>
           </div>
@@ -89,7 +63,7 @@ export default function Home() {
       </section>
 
       {/* Third Header Section */}
-      <section className=" bg-gradient-to-br from-pink-100 to-purple-100 py-16">
+      <section className="bg-white py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-gray-900 text-3xl font-bold text-center mb-12">
             Our Vision

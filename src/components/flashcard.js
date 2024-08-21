@@ -4,8 +4,8 @@ import '../styles/flashcard.css';
 
 const FlipCard = ({ card, isFlipped, noAnimation }) => {
   return (
-    <div className="flashcard-container" role="button" aria-pressed={isFlipped}>
-      <div className={`flashcard ${isFlipped ? 'flipped' : ''} ${noAnimation ? 'no-animation' : ''}`}>
+    <div className="flashcard-container " role="button" aria-pressed={isFlipped}>
+      <div className={`flashcard w-72 h-96 relative transform-style-3d transition-transform duration-500 ${isFlipped ? 'flipped' : ''} ${noAnimation ? 'no-animation' : ''}`}>
         {/* Front of the card */}
         <div className="front absolute inset-0 flex items-center justify-center p-6 rounded-lg shadow-lg">
           <div className="text-center">

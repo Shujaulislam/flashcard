@@ -1,28 +1,24 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
 
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 model Deck {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  title  String
-  cards  Card[]
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  cards Card[]
+  userId String @db.ObjectId
 }
 
 model Card {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  front  String
-  back   String
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  front String
+  back  String
+  deck  Deck   @relation(fields: [deckId], references: [id])
   deckId String @db.ObjectId
-  deck   Deck   @relation(fields: [deckId], references: [id])
 }
