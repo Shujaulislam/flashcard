@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const uri = process.env.MONGODB_URI;
+const url = process.env.DATABASE_URL;
 const options = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
@@ -9,18 +9,18 @@ const options = {
 let client;
 let clientPromise;
 
-if (!process.env.MONGODB_URI) {
-  throw new Error("Please add your Mongo URI to .env");
+if (!process.env.DATABASE_URL) {
+  throw new Error("Please add your Mongo URL to .env");
 }
 
 if (process.env.NODE_ENV === "development") {
   if (!global._mongoClientPromise) {
-    client = new MongoClient(uri, options);
+    client = new MongoClient(url, options);
     global._mongoClientPromise = client.connect();
   }
   clientPromise = global._mongoClientPromise;
 } else {
-  client = new MongoClient(uri, options);
+  client = new MongoClient(url, options);
   clientPromise = client.connect();
 }
 
