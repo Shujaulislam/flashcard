@@ -1,46 +1,100 @@
-'use client'; // Required for client-side rendering in Next.js
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
+"use client";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { useUser } from "@clerk/nextjs";
 
-export default function Dashboard() {
+export default function MyDecks() {
+  const { user, isLoaded } = useUser();
   const [decks, setDecks] = useState([]);
+  const [filter, setFilter] = useState("ALL");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/decks')
-      .then(response => response.json())
-      .then(data => setDecks(data))
-      .catch(error => console.error('Error fetching decks:', error));
-  }, []);
+    if (isLoaded) {
+      fetch("/api/decks")
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Fetched decks:", data);
+          setDecks(data);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching decks:", error);
+          setIsLoading(false);
+        });
+    }
+  }, [isLoaded]);
+
+  if (!isLoaded || isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  const filteredDecks =
+    filter === "ALL"
+      ? decks
+      : decks.filter(
+          (deck) =>
+            deck.type === filter ||
+            (filter === "CUSTOM" && user && deck.userId === user.id)
+        );
 
   return (
     <div className="min-h-screen p-8 bg-gradient-to-b from-blue-50 via-purple-50 to-blue-100 text-gray-800">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-extrabold mb-6 text-center text-blue-700">PG Diploma In Advanced Computing (PG-DAC)</h1>
-        <h2 className="text-lg mb-10 text-center text-gray-600">
-          PG-DAC is the most popular PG Diploma course of C-DAC...
-        </h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {decks.map(deck => (
-            <div 
-              key={deck.id} 
-              className="h-[35vh] bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105"
-            >
-              <h2 className="text-2xl font-semibold mb-4 text-gray-900">{deck.title}</h2>
-              {deck.description && (
-                <p className="text-gray-700 mb-6">{deck.description}</p>
-              )}
-              <Link 
-              passHref={true}
-              legacyBehavior={true}
-                href={`/decks/${deck.id}`} 
-                as={`/decks/${deck.id}`}
-                className="inline-block px-6 py-3 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg shadow-md hover:from-blue-600 hover:to-purple-600 transition-all duration-300 ease-in-out"
-              >
-                Start Deck
-              </Link>
-            </div>
-          ))}
+        <h1 className="text-3xl font-extrabold mb-6 text-center text-blue-700">
+          My Decks
+        </h1>
+        <div className="mb-6 flex justify-center">
+          <button
+            onClick={() => setFilter("ALL")}
+            className={`mx-2 px-4 py-2 rounded ${
+              filter === "ALL" ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
+          >
+            All
+          </button>
+          <button
+            onClick={() => setFilter("PREBUILT")}
+            className={`mx-2 px-4 py-2 rounded ${
+              filter === "PREBUILT" ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
+          >
+            Pre-built
+          </button>
+          <button
+            onClick={() => setFilter("CUSTOM")}
+            className={`mx-2 px-4 py-2 rounded ${
+              filter === "CUSTOM" ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
+          >
+            Custom
+          </button>
         </div>
+        {filteredDecks.length === 0 ? (
+          <p className="text-center text-gray-600">
+            No decks found. Create a new deck to get started!
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {filteredDecks.map((deck) => (
+              <div
+                key={deck.id}
+                className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105"
+              >
+                <h2 className="text-2xl font-semibold mb-4 text-gray-900">
+                  {deck.title}
+                </h2>
+                <p className="text-gray-600 mb-4">Type: {deck.type}</p>
+                <Link
+                  href={`/decks/${deck.id}`}
+                  className="inline-block px-6 py-3 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg shadow-md hover:from-blue-600 hover:to-purple-600 transition-all duration-300 ease-in-out"
+                >
+                  View Deck
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,27 +1,27 @@
 "use client"; // This ensures the component is treated as a client component
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useUser } from '@clerk/clerk-react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/clerk-react";
+import axios from "axios";
 
 export default function CustomCardPage() {
   const { user } = useUser();
   const [decks, setDecks] = useState([]);
-  const [newDeckTitle, setNewDeckTitle] = useState('');
-  const [newCards, setNewCards] = useState([{ front: '', back: '' }]);
+  const [newDeckTitle, setNewDeckTitle] = useState("");
+  const [newCards, setNewCards] = useState([{ front: "", back: "" }]);
   const router = useRouter();
 
   useEffect(() => {
     if (!user) {
-      router.push('/sign-in'); // Redirect to sign-in if not logged in
+      router.push("/sign-in"); // Redirect to sign-in if not logged in
       return;
     }
   }, []);
 
   const handleAddCard = () => {
-    setNewCards([...newCards, { front: '', back: '' }]);
+    setNewCards([...newCards, { front: "", back: "" }]);
   };
 
   const handleCardChange = (index, field, value) => {
@@ -29,41 +29,49 @@ export default function CustomCardPage() {
     updatedCards[index][field] = value;
     setNewCards(updatedCards);
   };
-
   const handleSubmit = () => {
     if (!user) return;
 
     const data = {
       title: newDeckTitle,
       type: "CUSTOM",
-      cards: newCards
+      cards: newCards,
+      userId: user.id, // Add this line
     };
 
-    axios.post('/api/userdecks', data)
-      .then(response => {
+    axios
+      .post("/api/userdecks", data)
+      .then((response) => {
         setDecks([...decks, response.data]);
-        setNewDeckTitle('');
-        setNewCards([{ front: '', back: '' }]);
+        setNewDeckTitle("");
+        setNewCards([{ front: "", back: "" }]);
         console.log("the new deck installed", decks);
       })
-      .catch(error => {
-        console.error('Error saving deck:', error);
+      .catch((error) => {
+        console.error("Error saving deck:", error);
       });
   };
 
   return (
     <div className="bg-white py-12">
       <div className="container mx-auto px-4">
-        <h1 className="text-5xl font-extrabold text-center text-gray-800 mb-12">Your Custom Decks</h1>
+        <h1 className="text-5xl font-extrabold text-center text-gray-800 mb-12">
+          Your Custom Decks
+        </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {decks.map(deck => (
+          {decks.map((deck) => (
             <div
               key={deck.id}
               className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200"
             >
-              <h3 className="text-2xl font-bold text-gray-700 mb-4">{deck.title}</h3>
-              <Link href={`/decks/${deck.id}`} className="text-indigo-500 hover:text-indigo-700 font-medium">
+              <h3 className="text-2xl font-bold text-gray-700 mb-4">
+                {deck.title}
+              </h3>
+              <Link
+                href={`/decks/${deck.id}`}
+                className="text-indigo-500 hover:text-indigo-700 font-medium"
+              >
                 View Deck
               </Link>
             </div>
@@ -71,7 +79,9 @@ export default function CustomCardPage() {
         </div>
 
         <div className="mt-16 bg-gray-50 p-8 rounded-lg shadow-lg">
-          <h2 className="text-4xl font-semibold text-gray-800 mb-8 text-center">Add a New Deck</h2>
+          <h2 className="text-4xl font-semibold text-gray-800 mb-8 text-center">
+            Add a New Deck
+          </h2>
           <div className="mb-8">
             <input
               type="text"
@@ -89,14 +99,18 @@ export default function CustomCardPage() {
                   type="text"
                   placeholder="Front"
                   value={card.front}
-                  onChange={(e) => handleCardChange(index, 'front', e.target.value)}
+                  onChange={(e) =>
+                    handleCardChange(index, "front", e.target.value)
+                  }
                   className="border border-gray-300 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
                 <input
                   type="text"
                   placeholder="Back"
                   value={card.back}
-                  onChange={(e) => handleCardChange(index, 'back', e.target.value)}
+                  onChange={(e) =>
+                    handleCardChange(index, "back", e.target.value)
+                  }
                   className="border border-gray-300 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>

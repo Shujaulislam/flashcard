@@ -1,27 +1,14 @@
-import { MongoClient } from "mongodb";
+import { PrismaClient } from "@prisma/client";
 
-const url = process.env.DATABASE_URL;
-const options = {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-};
+let prisma;
 
-let client;
-let clientPromise;
-
-if (!process.env.DATABASE_URL) {
-  throw new Error("Please add your Mongo URL to .env");
-}
-
-if (process.env.NODE_ENV === "development") {
-  if (!global._mongoClientPromise) {
-    client = new MongoClient(url, options);
-    global._mongoClientPromise = client.connect();
-  }
-  clientPromise = global._mongoClientPromise;
+if (process.env.NODE_ENV === "production") {
+  prisma = new PrismaClient();
 } else {
-  client = new MongoClient(url, options);
-  clientPromise = client.connect();
+  if (!global.prisma) {
+    global.prisma = new PrismaClient();
+  }
+  prisma = global.prisma;
 }
 
-export default clientPromise;
+export default prisma;
