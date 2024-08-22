@@ -57,7 +57,7 @@ CDAC FLASHCARDS
           </li>
           <li>
             {user && 
-              <Link href="/mycards">
+              <Link href="/mydecks">
              My cards
             </Link>
            }
