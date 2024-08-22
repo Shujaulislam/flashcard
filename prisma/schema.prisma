@@ -1,5 +1,4 @@
 // prisma/schema.prisma
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,10 +9,9 @@ datasource db {
 }
 
 model Deck {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  title    String
-  type     String   // Changed from DeckType to String
-  cards    Card[]
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  cards Card[]
 }
 
 model Card {

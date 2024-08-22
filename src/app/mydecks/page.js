@@ -6,7 +6,7 @@ export default function Dashboard() {
   const [decks, setDecks] = useState([]);
 
   useEffect(() => {
-    fetch('/api/decks')
+    fetch('/api/customdecks')
       .then(response => response.json())
       .then(data => setDecks(data))
       .catch(error => console.error('Error fetching decks:', error));
