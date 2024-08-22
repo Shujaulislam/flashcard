@@ -3,6 +3,7 @@ import { getAuth } from '@clerk/nextjs/server';
 
 const prisma = new PrismaClient();
 
+// GET method
 export async function GET(request) {
   const { userId } = getAuth(request);
 
@@ -24,29 +25,36 @@ export async function GET(request) {
   });
 }
 
+// POST method
 export async function POST(request) {
-  const { userId } = getAuth(request);
-
-  if (!userId) {
-    return new Response('Unauthorized', { status: 401 });
-  }
-
   const { title, cards } = await request.json();
 
-  const deck = await prisma.deck.create({
-    data: {
-      title,
-      userId,
-      cards: {
-        create: cards.map(card => ({
-          front: card.front,
-          back: card.back,
-        })),
+  try {
+    // Create a new deck and its associated cards
+    const newDeck = await prisma.deck.create({
+      data: {
+        title,
+        cards: {
+          create: cards.map((card) => ({
+            front: card.front,
+            back: card.back,
+          })),
+        },
       },
-    },
-  });
+      include: {
+        cards: true,
+      },
+    });
 
-  return new Response(JSON.stringify(deck), {
-    headers: { 'Content-Type': 'application/json' },
-  });
+    return new Response(JSON.stringify(newDeck), {
+      status: 201,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (error) {
+    console.error('Error creating deck:', error);
+    return new Response(JSON.stringify({ error: 'Error creating deck' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 }

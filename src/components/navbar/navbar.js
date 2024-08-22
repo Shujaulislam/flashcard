@@ -1,8 +1,9 @@
-import React from 'react';
+"use client";
+import React,{useEffect, useState} from 'react';
 import Link from 'next/link';
 import styles from './navbar.module.css';
 import Image from 'next/image';
-
+import { useUser } from '@clerk/clerk-react';
 import {
 
   SignInButton,
@@ -12,6 +13,17 @@ import {
 } from '@clerk/nextjs'
 
 const Navbar = () => {
+  const { user } = useUser();
+  const [show , setShow] =useState(false)
+
+  useEffect(() => {
+    if (user) {
+      setShow(true)
+      alert("im user") // Redirect to sign-in if not logged in
+      return;
+    }
+  
+  }, []);
   return (
     <div className={`${styles.navbar} ${styles.nav}`}>
       <div className={styles['navbar-start']}>
@@ -42,6 +54,13 @@ CDAC FLASHCARDS
             <Link href="/contact">
              Contact
             </Link>
+          </li>
+          <li>
+            {user && 
+              <Link href="/mycards">
+             My cards
+            </Link>
+           }
           </li>
         </ul>
         <div>

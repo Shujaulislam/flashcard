@@ -1,5 +1,5 @@
 'use client'; // Required for client-side rendering in Next.js
-
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 export default function Dashboard() {
@@ -29,12 +29,15 @@ export default function Dashboard() {
               {deck.description && (
                 <p className="text-gray-700 mb-6">{deck.description}</p>
               )}
-              <a 
+              <Link 
+              passHref={true}
+              legacyBehavior={true}
                 href={`/decks/${deck.id}`} 
+                as={`/decks/${deck.id}`}
                 className="inline-block px-6 py-3 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg shadow-md hover:from-blue-600 hover:to-purple-600 transition-all duration-300 ease-in-out"
               >
                 Start Deck
-              </a>
+              </Link>
             </div>
           ))}
         </div>
