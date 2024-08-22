@@ -29,7 +29,7 @@ CDAC FLASHCARDS
             </Link>
           </li>
           <li>
-            <Link href="/dashboard">
+            <Link href="/prebuilt">
               Prebuilt Cards
             </Link>
           </li>
